@@ -1,0 +1,9 @@
+.signup-form {
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+
+.hidden-element {
+    display: none;
+}
