@@ -5,6 +5,11 @@
     include_once 'dataAccess/UserDAO.php';
     include_once 'controller/SiteUser.php';
 
+    if ((isset($_SESSION['user']))) {
+        // session_destroy();
+        header("Location: index.php");
+    }
+
     // Assign value without meaning to loginreturn so
     // error message for login isn't displayed
     $loginreturn = -1;

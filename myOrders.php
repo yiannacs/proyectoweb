@@ -6,6 +6,11 @@
         session_destroy();
         header("Location: index.php");
     }
+
+    if ($_SESSION['user']->getType() != 1) {
+        session_destroy();
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>

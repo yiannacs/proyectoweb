@@ -1,3 +1,13 @@
+<?php
+    include_once 'controller/SiteUser.php';
+    session_start();
+
+    if ((isset($_SESSION['user']))) {
+        // session_destroy();
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>

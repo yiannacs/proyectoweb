@@ -3,7 +3,12 @@
 
     include_once 'dataAccess/dbConnect.php';
     include_once 'dataAccess/UserDAO.php';
-    
+
+    if ((isset($_SESSION['user']))) {
+        // session_destroy();
+        header("Location: index.php");
+    }
+
     if (isset($_POST['add-user'])) {
         $id = $_POST['student-id'];
         $password = $_POST['passwd'];
