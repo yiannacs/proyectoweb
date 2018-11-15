@@ -33,17 +33,19 @@
             <label for="filter-items">Filtrar:</label>
             <input type="text" class="form-control" id="filter-items" name="filter-items">
             <!-- Tabla -->
-            <table class="table" id='avl-items'>
-                <thead>
-                    <tr>
-                        <th scope="col">Articulo</th>
-                        <th scope="col"># disponible</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Aqui van tr's -->
-                </tbody>
-            </table>
+            <div class="m-2">
+                <table class="table" id='avl-items'>
+                    <thead>
+                        <tr>
+                            <th scope="col">Articulo</th>
+                            <th scope="col"># disponible</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aqui van tr's -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- JQuery -->

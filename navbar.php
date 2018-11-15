@@ -2,7 +2,10 @@
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">Laboratorio de electronica</a>
+    <a class="navbar-brand" href="index.php">
+        <img src="img/logo.png" class='logo' alt="">
+        &nbsp;Laboratorio de electronica
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

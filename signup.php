@@ -17,7 +17,7 @@
 
         <!-- <p>I am the signup page :)</p> -->
         <div class="container">
-            <h3>Registro</h3>
+            <h5>Registro</h5>
             <form class='signup-form' onsubmit="return validateSignup()" action="signupResult.php" method='post'>
                 <div class="form-group">
                     <label for="student-id">Matricula:</label>

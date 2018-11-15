@@ -181,8 +181,27 @@ $(document).ready(function() {
 });
 
 function deleteOrderCookies() {
-    deleteCookie('userOrder');
-    deleteCookie('orderString');
+    let error = false;
+    if($('#order-items').val() == '') {
+        $('#empty-order').removeClass('hidden-element');
+        error = true;
+    } else {
+        $('#empty-order').addClass('hidden-element');
+    }
 
-    return true;
+    if($('#student-id').val() == '') {
+        $('#empty-id').removeClass('hidden-element');
+        error = true;
+    } else {
+        $('#empty-id').addClass('hidden-element');
+    }
+
+    if (error) {
+        return false;
+    } else {
+        deleteCookie('userOrder');
+        deleteCookie('orderString');
+
+        return true;
+    }
 }

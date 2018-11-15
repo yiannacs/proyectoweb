@@ -1,8 +1,12 @@
-/* .signup-form {
+.signup-form {
     width: 50%;
     position: relative;
     left: 25%;
-} */
+}
+.logo{
+    height: 30px;
+    width: auto;
+}
 
 .container {
     margin-top: 10px;

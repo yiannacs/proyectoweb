@@ -48,7 +48,7 @@
         <?php include 'navbar.php'; ?>
 
         <div class="container">
-            <h3>Login</h3>
+            <h5>Login</h5>
             <form class='signup-form' onsubmit="return validateLogin()" action="login.php" method='post'>
                 <div class="form-group">
                     <?php if ($loginreturn == 0) : ?>

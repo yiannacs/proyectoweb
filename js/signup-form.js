@@ -93,7 +93,7 @@ function validateSignup()
 
 
     if(error == 1) {
-        return false
+        return false;
     }
     else {
         return true;
