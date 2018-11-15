@@ -26,7 +26,7 @@
         <?php include 'navbar.php'; ?>
 
         <div class="container">
-                
+
             <h5>Busqueda de articulos</h5>
 
             <!-- Filtro -->

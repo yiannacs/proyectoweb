@@ -1,10 +1,14 @@
 <?php
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-            <a class="navbar-brand" href="index.php">Lab de electronica</a>
-            <div class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.php">Laboratorio de electronica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <form class="form-inline my-2 my-lg-0 ml-auto">
             <!-- There's a user logged in -->
             <?php if (isset($_SESSION['user'])) : ?>
                 <!-- New order button when user is an admin -->
@@ -46,6 +50,6 @@
                     <a class="btn btn-outline-success mr-1" href="signup.php" role="button">Register</a>
                 </form>
             <?php endif; ?>
-
-            </div>
-        </nav>
+        </form>
+    </div>
+</nav>

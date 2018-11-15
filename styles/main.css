@@ -1,7 +1,11 @@
-.signup-form {
+/* .signup-form {
     width: 50%;
     position: relative;
     left: 25%;
+} */
+
+.container {
+    margin-top: 10px;
 }
 
 .hidden-element {
