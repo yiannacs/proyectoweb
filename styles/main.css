@@ -7,3 +7,7 @@
 .hidden-element {
     display: none;
 }
+
+.order-remove {
+    margin-left: 2px;
+}
