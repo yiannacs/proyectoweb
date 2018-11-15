@@ -21,14 +21,14 @@
 
                     <!-- Dropdown options -->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Perfil</a>
+                        <!-- <a class="dropdown-item" href="#">Perfil</a> -->
 
                         <!-- Student-specific options -->
                         <?php if ($_SESSION['user']->getType() == 1) : ?>
                             <a class="dropdown-item" href="myOrders.php">Mis prestamos</a>
                         <!-- Admin-specific options -->
                         <?php elseif ($_SESSION['user']->getType() == 2) : ?>
-                            <a class="dropdown-item" href="#">Administrar prestamos</a>
+                            <a class="dropdown-item" href="manageOrders.php">Administrar prestamos</a>
                             <a class="dropdown-item" href="#">Adminsitrar cuentas</a>
                         <?php endif; ?>
 
