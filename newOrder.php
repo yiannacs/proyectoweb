@@ -41,8 +41,8 @@
                     <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
                     <!-- aria-describedby="idHelp" -->
                     <!-- <small id="idHelp" class="form-text text-muted">Introduce tu matricula en formato A0XXXXXXX</small> -->
-                    <div id='empty-id' class='hidden-element'>Elige una matricula</div>
-                    <div id='wrong-id' class='hidden-element'>La matricula no esta registrada</div>
+                    <div id='empty-id' class='red hidden-element'>Elige una matricula</div>
+                    <div id='wrong-id' class='red hidden-element'>La matricula no esta registrada</div>
                 </div>
 
                 <h6>Agregar dispositivo</h6>
@@ -52,8 +52,8 @@
                 </select>
                 <a class="btn btn-outline-success mr-1" href="#" role="button" id='add-to-order'>Agregar</a>
 
-                <div id='item-not-seld' class="hidden-element">Elige un dispositivo antes de agregar</div>
-                <div id='item-not-available' class="hidden-element">Este dispositivo ya no esta disponible</div>
+                <div id='item-not-seld' class="red hidden-element">Elige un dispositivo antes de agregar</div>
+                <div id='item-not-available' class="red hidden-element">Este dispositivo ya no esta disponible</div>
 
                 <h5>Resumen de la orden</h5>
                 <table class="table" id='order-summary'>
@@ -69,7 +69,7 @@
                     </tbody>
                 </table>
 
-                <div id='empty-order' class='hidden-element'>Agrega articulos antes de enviar la orden</div>
+                <div id='empty-order' class='red hidden-element'>Agrega articulos antes de enviar la orden</div>
                 <input type="text" class="form-control hidden-element" id="order-items" name="order-items">
 
                 <button name='new-order' id='new-order' type="submit" class="btn btn-primary">Enviar orden</button>

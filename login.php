@@ -62,12 +62,12 @@
 
                     <label for="student-id">Matricula:</label>
                     <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
-                    <div id='empty-id' class='hidden-element'>Introduce tu matricula</div>
-                    <div id='wrong-id' class='hidden-element'>Introduce tu matricula en el fomato A0XXXXXXX</div>
+                    <div id='empty-id' class='red hidden-element'>Introduce tu matricula</div>
+                    <div id='wrong-id' class='red hidden-element'>Introduce tu matricula en el fomato A0XXXXXXX</div>
 
                     <label for="passwd">Contrasena:</label>
                     <input type="password" class="form-control" id="passwd" name="passwd" placeholder="">
-                    <div id='empty-passwd' class='hidden-element'>Introduce tu contrasena</div>
+                    <div id='empty-passwd' class='red hidden-element'>Introduce tu contrasena</div>
                 </div>
 
                 <button name='login' id='login' type="submit" class="btn btn-primary">Log in</button>
