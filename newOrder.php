@@ -24,7 +24,7 @@
 
         <p>This is the new order page!</p>
 
-        <form class='signup-form' action="newOrderResult.php" method='post'>
+        <form action="newOrderResult.php" method='post'>
             <div class="form-group">
                 <label for="student-id">Matricula del alumno:</label>
                 <input value='a01234567' type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">

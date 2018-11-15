@@ -129,7 +129,46 @@
                 // echo $ex->getMessage();
                 return false;
             }
+        }
 
+        public function getUserOrders($username, $filter){
+            try{
+                $returned = 1;
+                if ($filter == 'none') {
+                    $returned = 0;
+                }
+                $statement = $this->Db->prepare("SELECT id, timestamp, returned FROM orders WHERE student=:student AND returned=:filter");
+                $statement->bindparam(":student", $username);
+                $statement->bindparam(":filter", $returned);
+                $statement->execute();
+
+                $dataRows = $statement->fetchAll(PDO::FETCH_ASSOC);
+                return $dataRows;
+            } catch (PDOException $ex){
+                // echo $ex->getMessage();
+                return false;
+            }
+        }
+
+        public function getOrderLoans($order){
+            try{
+//  SELECT  Person.FirstName,
+ //        Person.LastName,
+ //        PersonPhone.PhoneNumber
+ // FROM   Person.Person
+ //        INNER JOIN Person.PersonPhone
+ //        ON Person.BusinessEntityID =
+ //           PersonPhone.BusinessEntityID
+                $statement = $this->Db->prepare("SELECT loans.item, stock.description, loans.quantity, loans.dueDate, loans.returned FROM loans INNER JOIN stock ON loans.item=stock.id WHERE loans.orderId=:orderId");
+                $statement->bindparam(":orderId", $order);
+                $statement->execute();
+
+                $dataRows = $statement->fetchAll(PDO::FETCH_ASSOC);
+                return $dataRows;
+            } catch (PDOException $ex){
+                // echo $ex->getMessage();
+                return false;
+            }
         }
         // public function createOrder($orderno, $client, $summary, $price){
         //     try{

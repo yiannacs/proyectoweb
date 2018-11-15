@@ -25,7 +25,7 @@
 
                         <!-- Student-specific options -->
                         <?php if ($_SESSION['user']->getType() == 1) : ?>
-                            <a class="dropdown-item" href="#">Prestamos</a>
+                            <a class="dropdown-item" href="myOrders.php">Mis prestamos</a>
                         <!-- Admin-specific options -->
                         <?php elseif ($_SESSION['user']->getType() == 2) : ?>
                             <a class="dropdown-item" href="#">Administrar prestamos</a>
