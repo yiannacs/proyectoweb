@@ -56,12 +56,12 @@
                     <?php endif; ?>
 
                     <label for="student-id">Matricula:</label>
-                    <input value='a01234567' type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
+                    <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
                     <div id='empty-id' class='hidden-element'>Introduce tu matricula</div>
                     <div id='wrong-id' class='hidden-element'>Introduce tu matricula en el fomato A0XXXXXXX</div>
 
                     <label for="passwd">Contrasena:</label>
-                    <input value='1234' type="password" class="form-control" id="passwd" name="passwd" placeholder="">
+                    <input type="password" class="form-control" id="passwd" name="passwd" placeholder="">
                     <div id='empty-passwd' class='hidden-element'>Introduce tu contrasena</div>
                 </div>
 

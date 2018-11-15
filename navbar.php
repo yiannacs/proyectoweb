@@ -36,7 +36,7 @@
                         <!-- Admin-specific options -->
                         <?php elseif ($_SESSION['user']->getType() == 2) : ?>
                             <a class="dropdown-item" href="manageOrders.php">Administrar prestamos</a>
-                            <a class="dropdown-item" href="#">Adminsitrar cuentas</a>
+                            <!-- <a class="dropdown-item" href="#">Adminsitrar cuentas</a> -->
                         <?php endif; ?>
 
                         <!-- Logout -->

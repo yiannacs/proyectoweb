@@ -3,30 +3,8 @@
 
     include_once 'dataAccess/dbConnect.php';
     include_once 'dataAccess/UserDAO.php';
-
-    // login button was clicked
-    // if (isset($_POST['login'])) {
-    //     // echo '1';
-    //     $username = $_POST['username'];
-    //     $password = $_POST['password'];
-    //     // echo '2';
-    //
-    //     $loginreturn = $userDao->authenticateUser($username, $password);
-    //     // echo '3';
-    //
-    //     $wrongpasswd = 0;
-    //     if ($loginreturn == 0) {
-    //         $_SESSION['user'] = $username;
-    //         unset($wrongpasswd);
-    //     } else {
-    //         $wrongpasswd = 1;
-    //     }
-    // }
-
-    // echo "holiwi   ";
+    
     if (isset($_POST['add-user'])) {
-        // $id, $password, $name, $email, $phone
-        // echo "add-user is set  ";
         $id = $_POST['student-id'];
         $password = $_POST['passwd'];
         $name = $_POST['student-name'];
@@ -34,18 +12,8 @@
         $phone = $_POST['phone'];
 
         $useradded = $userDao->addUser($id, $password, $name, $email, $phone);
-        // header ('Location: ' . $_SERVER['REQUEST_URI']);
-        // exit();
     }
 
-    // // logout button was clicked
-    // if ( count($_GET) > 0 ) {
-    //     if ( isset($_GET['logout']) ) {
-    //         session_destroy();
-    //         unset($_SESSION['user']);
-    //         header("Location: index.php");
-    //     }
-    // }
 ?>
 
 <!DOCTYPE html>
