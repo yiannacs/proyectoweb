@@ -37,37 +37,51 @@
             <h5>Nueva orden</h5>
             <form onsubmit="return deleteOrderCookies()" action="newOrderResult.php" method='post'>
                 <div class="form-group">
-                    <label for="student-id">Matricula del alumno:</label>
-                    <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
-                    <!-- aria-describedby="idHelp" -->
-                    <!-- <small id="idHelp" class="form-text text-muted">Introduce tu matricula en formato A0XXXXXXX</small> -->
-                    <div id='empty-id' class='red hidden-element'>Elige una matricula</div>
-                    <div id='wrong-id' class='red hidden-element'>La matricula no esta registrada</div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="student-id">Matricula del alumno:</label>
+                            <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
+                            <!-- aria-describedby="idHelp" -->
+                            <!-- <small id="idHelp" class="form-text text-muted">Introduce tu matricula en formato A0XXXXXXX</small> -->
+                            <div id='empty-id' class='red hidden-element'>Elige una matricula</div>
+                            <div id='wrong-id' class='red hidden-element'>La matricula no esta registrada</div>
+                        </div>
+                    </div>
                 </div>
 
                 <h6>Agregar dispositivo</h6>
-                <label class="my-1 mr-2" for="items-list">Dispositivo:</label>
-                <select class="custom-select my-1 mr-sm-2" id="items-list">
-                    <?php echo $labEquipmentOptions; ?>
-                </select>
-                <a class="btn btn-outline-success mr-1" href="#" role="button" id='add-to-order'>Agregar</a>
+                <div class="row">
+                    <div class="col-8">
+                        <!-- <label class="my-1 mr-2" for="items-list">Dispositivo:</label> -->
+                        <select class="custom-select my-1 mr-sm-2" id="items-list">
+                            <?php echo $labEquipmentOptions; ?>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <a class="btn btn-outline-success my-1 mr-sm-2" href="#" role="button" id='add-to-order'>Agregar</a>
+                    </div>
+                </div>
 
                 <div id='item-not-seld' class="red hidden-element">Elige un dispositivo antes de agregar</div>
                 <div id='item-not-available' class="red hidden-element">Este dispositivo ya no esta disponible</div>
 
-                <h5>Resumen de la orden</h5>
-                <table class="table" id='order-summary'>
-                    <thead>
-                        <tr>
-                            <th scope="col">Dispositivo</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Agregar/Quitar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Aqui van tr's -->
-                    </tbody>
-                </table>
+                <div class="row my-2">
+                    <div class="col-12">
+                        <h5>Resumen de la orden</h5>
+                        <table class="table" id='order-summary'>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Dispositivo</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Agregar/Quitar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Aqui van tr's -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <div id='empty-order' class='red hidden-element'>Agrega articulos antes de enviar la orden</div>
                 <input type="text" class="form-control hidden-element" id="order-items" name="order-items">
