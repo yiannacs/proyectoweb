@@ -104,8 +104,6 @@ function returnItem(index, id, params) {
         url: 'dataAccess/returnItem.php',
         type: 'post',
         success: function(response) {
-            // Populate table
-            // console.log(response);
             let quantity = parseInt($('#order-items tbody').children().eq(index).children().eq(2).html());
             if (quantity > 0) {
                 quantity--;
@@ -116,9 +114,6 @@ function returnItem(index, id, params) {
                 $('#order-items tbody').children().eq(index).children().eq(5).html(' ');
                 $('#order-items tbody').children().eq(index).children().eq(4).html('Si');
             }
-            // let orderLoans = JSON.parse(response);
-            // console.log(orderLoans);
-            // $('#
         }
     });
 }

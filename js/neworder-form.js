@@ -21,6 +21,7 @@ $('#add-to-order').on('click', function(){
                 // Add to order
                 orderItems.push({item: labEquipment[$itemsList.val() - 1], quantity: 1})
                 $('#order-items').val(JSON.stringify(orderItems));
+                $('#order-items').change();
 
 
                 // Assemble row
@@ -82,6 +83,7 @@ function incrementItemInOrder(index) {
         orderItems[index].quantity += 1;
         $('#order-summary tbody tr').eq(index).children().eq(1).html(orderItems[index].quantity);
         $('#order-items').val(JSON.stringify(orderItems));
+        $('#order-items').change();
 
         return true;
     } else {
@@ -95,6 +97,7 @@ function decrementItemInOrder(index) {
         orderItems[index].quantity -= 1;
         $('#order-summary tbody tr').eq(index).children().eq(1).html(orderItems[index].quantity);
         $('#order-items').val(JSON.stringify(orderItems));
+        $('#order-items').change();
 
 
         // If quantity got to 0
@@ -102,6 +105,7 @@ function decrementItemInOrder(index) {
             // Remove from orderItems array
             orderItems.splice(index, 1);
             $('#order-items').val(JSON.stringify(orderItems));
+            $('#order-items').change();
 
             // Remove from table
             $('#order-summary tbody tr').eq(index).remove();
@@ -120,6 +124,14 @@ function findItemInOrder(item) {
     }
     return -1;
 }
+
+$('#student-id').on('blur', function(){
+    setCookie('userOrder', $(this).val());
+});
+
+$('#order-items').on('change', function(){
+    setCookie('orderString', $(this).val());
+});
 
 // Get list of lab equipment from server
 $(document).ready(function() {
@@ -141,4 +153,36 @@ $(document).ready(function() {
             $('#items-list').html(labEquipmentOptions);
         }
     });
+
+    let lastUser = getCookie('userOrder');
+    let lastOrder = getCookie('orderString');
+
+    if (lastUser != '') {
+        $('#student-id').val(lastUser);
+    }
+    if (lastOrder != '') {
+        $('#order-items').val(lastOrder);
+        decodedOrder = JSON.parse(lastOrder);
+
+        let rows = '';
+        for (let i = 0; i < decodedOrder.length; i++) {
+            rows += '<tr>'
+                + '<td>' + decodedOrder[i].item.description + '</td>'
+                + '<td>' + decodedOrder[i].quantity + '</td>'
+                + '<td>'
+                + '<button type="button" class="btn btn-success btn-sm order-add">+</button>'
+                + '<button type="button" class="btn btn-danger btn-sm order-remove">-</button>'
+                + '</td>';
+        }
+        $('#order-summary tbody').html(rows);
+
+
+    }
 });
+
+function deleteOrderCookies() {
+    deleteCookie('userOrder');
+    deleteCookie('orderString');
+
+    return true;
+}

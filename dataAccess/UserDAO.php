@@ -174,6 +174,26 @@
             }
         }
 
+        public function getAllItems($filter){
+            try{
+                $returned = '';
+                if ($filter == 'none') {
+                    $returned = '';
+                } elseif ($filter == 'avl') {
+                    $returned = "WHERE available>0";
+                }
+                $stm = "SELECT description, available FROM stock " . $returned;
+                $statement = $this->Db->prepare($stm);
+                $statement->execute();
+
+                $dataRows = $statement->fetchAll(PDO::FETCH_ASSOC);
+                return $dataRows;
+            } catch (PDOException $ex){
+                // echo $ex->getMessage();
+                return false;
+            }
+        }
+
         public function getOrderLoans($order){
             try{
                 $statement = $this->Db->prepare("SELECT loans.id, loans.item, stock.description, loans.quantity, loans.dueDate, loans.returned FROM loans INNER JOIN stock ON loans.item=stock.id WHERE loans.orderId=:orderId");

@@ -30,38 +30,15 @@
         <?php include 'navbar.php'; ?>
 
         <!-- <p>This is the My Orders page!</p> -->
-
-        <h5>Prestamos</h5>
-        <table class="table" id='student-orders'>
-            <thead>
-                <tr>
-                    <th scope="col">No. de orden</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Status</th>
-                    <th scope="col"> </th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aqui van tr's -->
-            </tbody>
-        </table>
-
-        <div id='order-detailed' class="hidden-element">
-            <h5>Detalles de la orden</h5>
-            <p>Numero: <span id='detailed-order-id'></span></p>
-            <p>Alumno: <span id='detailed-order-student'></span></p>
-            <p>Fecha: <span id='detailed-order-date'></span></p>
-            <p>Status: <span id='detailed-order-status'></span></p>
-
-            <table class="table" id='order-items'>
+        <div class="container">
+            <h5>Prestamos</h5>
+            <table class="table" id='student-orders'>
                 <thead>
                     <tr>
-                        <th scope="col">No. de prestamo</th>
-                        <th scope="col">Articulo</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Fecha de entrega</th>
-                        <th scope="col">Regresado</th>
+                        <th scope="col">No. de orden</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Status</th>
                         <th scope="col"> </th>
                     </tr>
                 </thead>
@@ -69,7 +46,32 @@
                     <!-- Aqui van tr's -->
                 </tbody>
             </table>
+
+            <div id='order-detailed' class="hidden-element">
+                <h5>Detalles de la orden</h5>
+                <p>Numero: <span id='detailed-order-id'></span></p>
+                <p>Alumno: <span id='detailed-order-student'></span></p>
+                <p>Fecha: <span id='detailed-order-date'></span></p>
+                <p>Status: <span id='detailed-order-status'></span></p>
+
+                <table class="table" id='order-items'>
+                    <thead>
+                        <tr>
+                            <th scope="col">No. de prestamo</th>
+                            <th scope="col">Articulo</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Fecha de entrega</th>
+                            <th scope="col">Regresado</th>
+                            <th scope="col"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aqui van tr's -->
+                    </tbody>
+                </table>
+            </div>
         </div>
+
 
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

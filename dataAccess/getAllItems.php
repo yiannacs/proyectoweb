@@ -5,8 +5,8 @@
     session_start();
 
     $filter = $_POST['filter'];
-    $orders = $userDao->getAllOrders($filter);
+    $items = $userDao->getAllItems($filter);
 
-    $encodedOrders = json_encode($orders);
-    echo $encodedOrders;
+    $encodedItems = json_encode($items);
+    echo $encodedItems;
  ?>

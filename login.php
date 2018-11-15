@@ -47,7 +47,7 @@
         <!-- Navbar -->
         <?php include 'navbar.php'; ?>
 
-        <div class="centered-content">
+        <div class="container">
             <h3>Login</h3>
             <form class='signup-form' onsubmit="return validateLogin()" action="login.php" method='post'>
                 <div class="form-group">

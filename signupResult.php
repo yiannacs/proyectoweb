@@ -64,11 +64,14 @@
         <!-- Navbar -->
         <?php include 'navbar.php'; ?>
 
-        <?php if ($useradded) : ?>
-            <p>Usuario registrado!</p>
-        <?php else: ?>
-            <p>La matricula introducida ya esta registrada. Contacta al adminsitrador.</p>
-        <?php endif; ?>
+        <div class="container">
+            <?php if ($useradded) : ?>
+                <p>Usuario registrado!</p>
+            <?php else: ?>
+                <p>La matricula introducida ya esta registrada. Contacta al adminsitrador.</p>
+            <?php endif; ?>
+        </div>
+
 
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

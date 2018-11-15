@@ -27,11 +27,14 @@
         <!-- Navbar -->
         <?php include 'navbar.php'; ?>
 
-        <?php if ($orderCreated) : ?>
-            <p>Orden creada!</p>
-        <?php else: ?>
-            <p>Algo salio mal.</p>
-        <?php endif; ?>
+        <div class="container">
+            <?php if ($orderCreated) : ?>
+                <p>Orden creada!</p>
+            <?php else: ?>
+                <p>Algo salio mal.</p>
+            <?php endif; ?>
+        </div>
+
 
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
