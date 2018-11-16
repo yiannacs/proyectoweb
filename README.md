@@ -23,16 +23,16 @@ En la pantalla de _Préstamos_, el usuario puede elegir expandir alguno de los p
 Dando click al botón de _Nuevo préstamo_, el encargado puede registrar una nueva orden. Si se intenta agregar a la orden un artículo sin disponibilidad, aparecerá un mensaje de error. Si el usuario cierra la ventana antes de enviar el pedido, este se reestablecerá la próxima vez que visite esta pantalla.
 
 ## Implementación
-### Front end
-Se utilizó la librería de JavaScript jQuery y, para el diseño de la aplicación, bootstrap.
+### _Front end_
+Se utilizó la biblioteca de JavaScript jQuery y, para el diseño de la aplicación, bootstrap.
 
-### Back end
-Para el back end de la aplicación se utilizó php y una base de datos MySQL. Para el acceso a la base de datos se utilizó PDO.
+### _Back end_
+Para el _back end_ de la aplicación se utilizó php y una base de datos MySQL. Para el acceso a la base de datos se utilizó PDO.
 
 #### Acceso a datos
-A la clase UserDAO utilizada durante el curso se le agregaron los métodos necesarios para la funcionalidad de la aplicación. Todas las consultas y actualizaciones a la base de datos se hacen por medio de una instancia de esta clase.
+A la clase _UserDAO_ utilizada durante el curso se le agregaron los métodos necesarios para la funcionalidad de la aplicación. Todas las consultas y actualizaciones a la base de datos se hacen por medio de una instancia de esta clase.
 
-Para separar el procesamiento de las peticiones de las páginas de la aplicación, en los accesos hechos por medio de Ajax, para cada acceso con la misma función hay un archivo que recibe la petición, llama los métodos relevantes de la clase UserDAO y responde.
+Para separar el procesamiento de las peticiones y las páginas de la aplicación, en los accesos hechos por medio de Ajax, para cada acceso con la misma función hay un archivo que recibe la petición, llama los métodos relevantes de la clase _UserDAO_ y responde.
 
 #### Base de datos
 La base de datos tiene las tablas _users_, _stock_, _orders_, y _loans_.
@@ -56,7 +56,7 @@ Esta tabla almacena los artículos que el laboratorio posee.
 * _total_, número de artículos de este tipo que el laboratorio posee.
 * _available_, número de artículos de este tipo disponibles para prestarse.
 * _loanLength_, días por los que se prestan los artículos de este tipo.
-* _admin_, su valor es 0 para alumnos y 1 para encargados de laboratorio.
+* _admin_, su valor es _0_ para alumnos y _1_ para encargados de laboratorio.
 
 ##### _orders_
 Almacena las órdenes (conjunto de préstamos de uno o más tipos de artículos) pasadas y actuales que se han hecho.
@@ -64,7 +64,7 @@ Almacena las órdenes (conjunto de préstamos de uno o más tipos de artículos)
 * _id_, número de identificación de la orden.
 * _student_, _id_ del estudiante al que se le hizo el préstamo.
 * _timestamp_, fecha y hora en que se hizo la orden.
-* _returned_, 1 si todos los artículos de la orden se han regresado, 0 si no.
+* _returned_, _1_ si todos los artículos de la orden se han regresado, _0_ si no.
 
 ##### _loans_
 Almacena los préstamos (uno o más artículos del mismo tipo) que se han hecho.
@@ -74,7 +74,7 @@ Almacena los préstamos (uno o más artículos del mismo tipo) que se han hecho.
 * _item_, _id_ del tipo de artículo que se prestó.
 * _quantity_, número de artículos que el alumno tiene en su posesión. A medida que el alumno regresa artículos del préstamo, este campo decrementa.
 * _dueDate_, fecha para regresar el(los) artículo(s).
-* _returned_, 0 si no se han regresado los artículos del préstamo, 1 si sí.
+* _returned_, _0_ si no se han regresado los artículos del préstamo, _1_ si sí.
 
 ## Autor
 **Yiann A. Celaya** - *A012050246*
