@@ -40,41 +40,41 @@ La base de datos tiene las tablas _users_, _stock_, _orders_, y _loans_.
 ##### _users_
 Esta tabla almacena los usuarios del sitio.
 
-..* _id_, contiene la matrícula o nómina del usuario.
-..* _password_, contiene la contraseña del usuario.
-..* _name_, el nombre completo del usuario.
-..* _emai_, el correo electrónico.
-..* _phone_, el teléfono de contacto del usuario.
-..* _admin_, su valor es 0 para alumnos y 1 para encargados de laboratorio.
-..* _addedBy_, si el usuario es administrador, contiene el _id_ del usuario que lo agregó. Corresponde a una funcionalidad no implementada en la que encargados existentes podrían agregar nuevos.
+* _id_, contiene la matrícula o nómina del usuario.
+* _password_, contiene la contraseña del usuario.
+* _name_, el nombre completo del usuario.
+* _emai_, el correo electrónico.
+* _phone_, el teléfono de contacto del usuario.
+* _admin_, su valor es 0 para alumnos y 1 para encargados de laboratorio.
+* _addedBy_, si el usuario es administrador, contiene el _id_ del usuario que lo agregó. Corresponde a una funcionalidad no implementada en la que encargados existentes podrían agregar nuevos.
 
 ##### _stock_
 Esta tabla almacena los artículos que el laboratorio posee.
 
-..* _id_, número de identificación del tipo de artículo.
-..* _description_, nombre del artículo.
-..* _total_, número de artículos de este tipo que el laboratorio posee.
-..* _available_, número de artículos de este tipo disponibles para prestarse.
-..* _loanLength_, días por los que se prestan los artículos de este tipo.
-..* _admin_, su valor es 0 para alumnos y 1 para encargados de laboratorio.
+* _id_, número de identificación del tipo de artículo.
+* _description_, nombre del artículo.
+* _total_, número de artículos de este tipo que el laboratorio posee.
+* _available_, número de artículos de este tipo disponibles para prestarse.
+* _loanLength_, días por los que se prestan los artículos de este tipo.
+* _admin_, su valor es 0 para alumnos y 1 para encargados de laboratorio.
 
 ##### _orders_
 Almacena las órdenes (conjunto de préstamos de uno o más tipos de artículos) pasadas y actuales que se han hecho.
 
-..* _id_, número de identificación de la orden.
-..* _student_, _id_ del estudiante al que se le hizo el préstamo.
-..* _timestamp_, fecha y hora en que se hizo la orden.
-..* _returned_, 1 si todos los artículos de la orden se han regresado, 0 si no.
+* _id_, número de identificación de la orden.
+* _student_, _id_ del estudiante al que se le hizo el préstamo.
+* _timestamp_, fecha y hora en que se hizo la orden.
+* _returned_, 1 si todos los artículos de la orden se han regresado, 0 si no.
 
 ##### _loans_
 Almacena los préstamos (uno o más artículos del mismo tipo) que se han hecho.
 
-..* _id_, número de identificación del préstamo.
-..* _orderId, _id_ de la orden a la que pertenece este préstamo
-..* _item_, _id_ del tipo de artículo que se prestó.
-..* _quantity_, número de artículos que el alumno tiene en su posesión. A medida que el alumno regresa artículos del préstamo, este campo decrementa.
-..* _dueDate_, fecha para regresar el(los) artículo(s).
-..* _returned_, 0 si no se han regresado los artículos del préstamo, 1 si sí.
+* _id_, número de identificación del préstamo.
+* _orderId, _id_ de la orden a la que pertenece este préstamo
+* _item_, _id_ del tipo de artículo que se prestó.
+* _quantity_, número de artículos que el alumno tiene en su posesión. A medida que el alumno regresa artículos del préstamo, este campo decrementa.
+* _dueDate_, fecha para regresar el(los) artículo(s).
+* _returned_, 0 si no se han regresado los artículos del préstamo, 1 si sí.
 
 ## Autor
 * **Yiann A. Celaya** - *A012050246* - [PurpleBooth](https://github.com/PurpleBooth)
