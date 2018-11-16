@@ -1,6 +1,5 @@
-// var options = {};
-
 $(document).ready(function() {
+    // Unimplemented order-filtering
     let options = {filter:'none'};
     loadOrders(options);
 });
@@ -30,21 +29,25 @@ function loadOrders(options) {
                     + '<td>' + '<a href="#">Ver mas</a>' + '</td>'
                     + '</tr>';
             }
-            
+
             $('#student-orders tbody').html(rows);
         }
     });
 }
 
+// Order was clicked, load detailed view
 $(document).on('click', '#student-orders tbody tr', function(){
-    let orderIndex = $(this).index();  // Add if 0; Remove if 1;
-    let orderId = $(this).children().eq(0).html();
+    let orderIndex = $(this).index();   // index in table
+    let orderId = $(this).children().eq(0).html();  // id in db
     let orderDate = $(this).children().eq(1).html();
     let orderSts = $(this).children().eq(2).html();
+
+    // Display order info
     $('#detailed-order-id').html(orderId);
     $('#detailed-order-date').html(orderDate);
     $('#detailed-order-status').html(orderSts);
 
+    // Load loaned items
     let params = {orderId: orderId};
     loadLoans(params);
 });

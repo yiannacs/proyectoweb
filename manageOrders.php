@@ -2,11 +2,13 @@
     include_once 'controller/SiteUser.php';
     session_start();
 
+    // Go to index if not logged in
     if (!(isset($_SESSION['user']))) {
         session_destroy();
         header("Location: index.php");
     }
 
+    // Go to index if not a lab admin
     if ($_SESSION['user']->getType() != 2) {
         session_destroy();
         header("Location: index.php");
@@ -21,15 +23,14 @@
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles/main.css">
 
+        <link rel="stylesheet" href="styles/main.css">
         <title>Laboratorio de electrónica</title>
     </head>
     <body>
         <!-- Navbar -->
         <?php include 'navbar.php'; ?>
 
-        <!-- <p>This is the My Orders page!</p> -->
         <div class="container">
             <h5>Prestamos</h5>
             <table class="table" id='student-orders'>
@@ -72,7 +73,6 @@
             </div>
         </div>
 
-
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <!-- Bootstrap stuff -->
@@ -80,6 +80,5 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
         <script src='js/manage-orders.js' type="text/javascript"></script>
-
     </body>
 </html>

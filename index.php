@@ -2,6 +2,7 @@
     include_once 'controller/SiteUser.php';
     session_start();
 
+    // Process log out
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['user']);
@@ -17,8 +18,8 @@
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles/main.css">
 
+        <link rel="stylesheet" href="styles/main.css">
         <title>Laboratorio de electrónica</title>
     </head>
     <body>
@@ -26,12 +27,12 @@
         <?php include 'navbar.php'; ?>
 
         <div class="container">
-
             <h5>Busqueda de articulos</h5>
 
             <!-- Filtro -->
             <label for="filter-items">Filtrar:</label>
             <input type="text" class="form-control" id="filter-items" name="filter-items">
+
             <!-- Tabla -->
             <div class="m-2">
                 <table class="table" id='avl-items'>

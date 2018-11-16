@@ -1,10 +1,9 @@
-// var options = {};
-
 $(document).ready(function() {
     let options = {filter:'none'};
     loadOrders(options);
 });
 
+// Load all orders from database
 function loadOrders(options) {
     $.ajax({
         data: options,
@@ -37,17 +36,21 @@ function loadOrders(options) {
     });
 }
 
+// Load detailed view
 $(document).on('click', '#student-orders tbody tr', function(){
-    let orderIndex = $(this).index();  // Add if 0; Remove if 1;
-    let orderId = $(this).children().eq(0).html();
+    let orderIndex = $(this).index();  // Index of order in table
+    let orderId = $(this).children().eq(0).html();  // id in db
     let orderUser = $(this).children().eq(1).html();
     let orderDate = $(this).children().eq(2).html();
     let orderSts = $(this).children().eq(3).html();
+
+    // Display order info in detailed view
     $('#detailed-order-id').html(orderId);
     $('#detailed-order-student').html(orderUser);
     $('#detailed-order-date').html(orderDate);
     $('#detailed-order-status').html(orderSts);
 
+    // Load items loaned in order
     let params = {orderId: orderId};
     loadLoans(params);
 });
@@ -65,7 +68,6 @@ function loadLoans(params) {
             let rows = '';
 
             for (let i = 0; i < orderLoans.length; i++) {
-
                 let returned = '';
                 let returnLink = '';
                 if(orderLoans[i].returned == 0) {
@@ -91,6 +93,8 @@ function loadLoans(params) {
     });
 }
 
+// Give item back
+// Is actually triggered when row is clicked anywhere
 $(document).on('click', '#order-items tbody tr', function(){
     let loanIndex = $(this).index();
     let loanId = $(this).children().eq(0).html();
@@ -98,6 +102,7 @@ $(document).on('click', '#order-items tbody tr', function(){
     returnItem(loanIndex, loanId, params);
 });
 
+// Send request to return item
 function returnItem(index, id, params) {
     $.ajax({
         data: params,
@@ -105,11 +110,14 @@ function returnItem(index, id, params) {
         type: 'post',
         success: function(response) {
             let quantity = parseInt($('#order-items tbody').children().eq(index).children().eq(2).html());
+
+            // If there where more than 0 of item, decrement count
             if (quantity > 0) {
                 quantity--;
                 $('#order-items tbody').children().eq(index).children().eq(2).html(quantity);
             }
 
+            // If there are now 0 of item, mark item as returned
             if (quantity == 0){
                 $('#order-items tbody').children().eq(index).children().eq(5).html(' ');
                 $('#order-items tbody').children().eq(index).children().eq(4).html('Si');

@@ -4,11 +4,13 @@
     include_once 'controller/SiteUser.php';
     session_start();
 
+    // Go to index if not logged in
     if (!(isset($_SESSION['user']))) {
         session_destroy();
         header("Location: index.php");
     }
 
+    // Go to index if not a lab admin
     if ($_SESSION['user']->getType() != 2) {
         session_destroy();
         header("Location: index.php");
@@ -24,15 +26,14 @@
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles/main.css">
 
+        <link rel="stylesheet" href="styles/main.css">
         <title>Laboratorio de electrónica</title>
     </head>
     <body>
         <!-- Navbar -->
         <?php include 'navbar.php'; ?>
 
-        <!-- <p>This is the new order page!</p> -->
         <div class="container">
             <h5>Nueva orden</h5>
             <form onsubmit="return deleteOrderCookies()" action="newOrderResult.php" method='post'>
@@ -41,8 +42,6 @@
                         <div class="col-8">
                             <label for="student-id">Matricula del alumno:</label>
                             <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
-                            <!-- aria-describedby="idHelp" -->
-                            <!-- <small id="idHelp" class="form-text text-muted">Introduce tu matricula en formato A0XXXXXXX</small> -->
                             <div id='empty-id' class='red hidden-element'>Elige una matricula</div>
                             <div id='wrong-id' class='red hidden-element'>La matricula no esta registrada</div>
                         </div>
@@ -52,7 +51,6 @@
                 <h6>Agregar dispositivo</h6>
                 <div class="row">
                     <div class="col-8">
-                        <!-- <label class="my-1 mr-2" for="items-list">Dispositivo:</label> -->
                         <select class="custom-select my-1 mr-sm-2" id="items-list">
                             <?php echo $labEquipmentOptions; ?>
                         </select>

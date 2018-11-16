@@ -13,10 +13,5 @@
     }
 
     include_once 'UserDAO.php';
-    // echo 'db1';
     $userDao = new UserDAO($DB_CON);
-    // echo 'db2';
-    // $test = $userDao->authenticateUser('user1', '1234');
-    // echo $test;
-    // echo 'db3';
 ?>

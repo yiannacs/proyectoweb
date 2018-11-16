@@ -91,7 +91,6 @@ function validateSignup()
         $wrongPhone.addClass('hidden-element');
     }
 
-
     if(error == 1) {
         return false;
     }
@@ -144,6 +143,7 @@ function validateLogin() {
     }
 }
 
+// Validate username. Only ITESM IDs/Employee numbers.
 function validateId(id) {
     var idRegex = /[al]0[0-9]{7}/i;
     return idRegex.test(id);

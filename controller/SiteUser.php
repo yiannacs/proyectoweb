@@ -1,4 +1,6 @@
 <?php
+    // Didn't want to save whole user row in session.
+    // A new class wasn't really necessary, but ¯\_(ツ)_/¯
     class SiteUser {
         private $id;
         private $type;

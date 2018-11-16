@@ -23,7 +23,6 @@ $('#add-to-order').on('click', function(){
                 $('#order-items').val(JSON.stringify(orderItems));
                 $('#order-items').change();
 
-
                 // Assemble row
                 let row = '<tr>'
                     + '<td>' + orderItems[orderItems.length - 1].item.description + '</td>'
@@ -77,12 +76,13 @@ $(document).on('click', '#order-summary button', function(){
     }
 });
 
-
 function incrementItemInOrder(index) {
     if (orderItems[index].quantity < orderItems[index].item.available) {
         orderItems[index].quantity += 1;
         $('#order-summary tbody tr').eq(index).children().eq(1).html(orderItems[index].quantity);
+        // Save order summary to hidden field
         $('#order-items').val(JSON.stringify(orderItems));
+        // Trigger change event so cookie is updated
         $('#order-items').change();
 
         return true;
@@ -91,14 +91,12 @@ function incrementItemInOrder(index) {
     }
 }
 
-
 function decrementItemInOrder(index) {
     if (orderItems[index].quantity > 0) {
         orderItems[index].quantity -= 1;
         $('#order-summary tbody tr').eq(index).children().eq(1).html(orderItems[index].quantity);
         $('#order-items').val(JSON.stringify(orderItems));
         $('#order-items').change();
-
 
         // If quantity got to 0
         if (orderItems[index].quantity == 0) {
@@ -125,10 +123,12 @@ function findItemInOrder(item) {
     return -1;
 }
 
+// Save changes to student id in cookie
 $('#student-id').on('blur', function(){
     setCookie('userOrder', $(this).val());
 });
 
+// Save changes to order in cookie
 $('#order-items').on('change', function(){
     setCookie('orderString', $(this).val());
 });
@@ -154,6 +154,7 @@ $(document).ready(function() {
         }
     });
 
+    // Recover last unfinished order from cookie
     let lastUser = getCookie('userOrder');
     let lastOrder = getCookie('orderString');
 
@@ -175,13 +176,16 @@ $(document).ready(function() {
                 + '</td>';
         }
         $('#order-summary tbody').html(rows);
-
-
     }
 });
 
+// When the order is to be sent,
+// validate fields and
+// delete cookies so next order starts empty
 function deleteOrderCookies() {
     let error = false;
+
+    // Validate order
     if($('#order-items').val() == '') {
         $('#empty-order').removeClass('hidden-element');
         error = true;
@@ -189,6 +193,7 @@ function deleteOrderCookies() {
         $('#empty-order').addClass('hidden-element');
     }
 
+    // Validate student id
     if($('#student-id').val() == '') {
         $('#empty-id').removeClass('hidden-element');
         error = true;

@@ -2,8 +2,9 @@
     include_once 'controller/SiteUser.php';
     session_start();
 
+    // If there's an active session,
+    // take them out of here
     if ((isset($_SESSION['user']))) {
-        // session_destroy();
         header("Location: index.php");
     }
 ?>
@@ -16,6 +17,7 @@
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
         <link rel="stylesheet" href="styles/main.css">
 
         <title>Laboratorio de electrónica</title>
@@ -25,15 +27,12 @@
         <!-- Navbar -->
         <?php include 'navbar.php'; ?>
 
-        <!-- <p>I am the signup page :)</p> -->
         <div class="container">
             <h5>Registro</h5>
             <form class='signup-form' onsubmit="return validateSignup()" action="signupResult.php" method='post'>
                 <div class="form-group">
                     <label for="student-id">Matricula:</label>
                     <input type="text" class="form-control" id="student-id" name="student-id" placeholder="A0XXXXXXX">
-                    <!-- aria-describedby="idHelp" -->
-                    <!-- <small id="idHelp" class="form-text text-muted">Introduce tu matricula en formato A0XXXXXXX</small> -->
                     <div id='empty-id' class='red hidden-element'>Introduce tu matricula</div>
                     <div id='wrong-id' class='red hidden-element'>Introduce tu matricula en el fomato A0XXXXXXX</div>
 

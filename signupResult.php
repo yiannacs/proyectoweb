@@ -4,11 +4,13 @@
     include_once 'dataAccess/dbConnect.php';
     include_once 'dataAccess/UserDAO.php';
 
+    // If there's already an active session,
+    // take them out of here
     if ((isset($_SESSION['user']))) {
-        // session_destroy();
         header("Location: index.php");
     }
 
+    // Process form
     if (isset($_POST['add-user'])) {
         $id = $_POST['student-id'];
         $password = $_POST['passwd'];
@@ -24,12 +26,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
         <link rel="stylesheet" href="styles/main.css">
         <title>Laboratorio de electrónica</title>
     </head>
@@ -44,7 +46,6 @@
                 <p>La matricula introducida ya esta registrada. Contacta al adminsitrador.</p>
             <?php endif; ?>
         </div>
-
 
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

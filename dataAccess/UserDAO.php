@@ -69,26 +69,24 @@
 
         public function newOrder($student, $orderSummary) {
             try {
+                // Add entry to orders table
                 $statement = $this->Db->prepare (
                     "INSERT INTO orders (student)
                     VALUES (:student)");
                 $statement->bindparam(":student", $student);
                 $statement->execute();
 
+                // Get id of newly-created order
                 $createdOrder = $this->Db->lastInsertId();
 
-                // echo $orderSummary;
-
-
+                // Save lent items in loans table
                 foreach ($orderSummary as $key => $value) {
                     $itemId = $value->item->id;
                     $quantity = $value->quantity;
                     $loanDurn = $value->item->loanLength;
 
                     $this->newLoan($createdOrder, $itemId, $quantity, $loanDurn);
-                    // echo $value->quantity;
                 }
-                // echo $createdOrder;
                 return true;
             }
             catch (PDOException $ex) {
@@ -99,12 +97,13 @@
 
         public function newLoan($orderId, $itemId, $quantity, $loanDurn){
             try {
-                // Add entry to loans table
+                //Compute dueDate
                 $today = date('d-m-Y');
                 $loanDays = "+" . $loanDurn . " days";
                 $endOfLoan = strtotime($loanDays, strtotime($today));
                 $dueDate = date('Y-m-d', $endOfLoan);
 
+                // Add entry to loans table
                 $statement = $this->Db->prepare (
                     "INSERT INTO loans (orderId, item, quantity, dueDate)
                     VALUES (:orderId, :item, :quantity, :dueDate)");
@@ -114,16 +113,18 @@
                 $statement->bindparam(":dueDate", $dueDate);
                 $statement->execute();
 
-                // Update available in stock
-                //Update available in stock table
+                // Update available in stock table
+                // Get current count of available items
                 $statement = $this->Db->prepare("SELECT available FROM stock WHERE id=:itemId");
                 $statement->bindparam(":itemId", $itemId);
                 $statement->execute();
                 $dataRows = $statement->fetch(PDO::FETCH_ASSOC);
 
+                // Compute new count
                 $q = $dataRows['available'];
                 $q = $q - $quantity;
 
+                // Update count in table
                 $statement = $this->Db->prepare("UPDATE stock SET available=:q WHERE id=:itemId");
                 $statement->bindparam(":q", $q);
                 $statement->bindparam(":itemId", $itemId);
@@ -139,10 +140,13 @@
 
         public function getUserOrders($username, $filter){
             try{
+                // Filter. Not implemented other options :(
                 $returned = '';
                 if ($filter == 'none') {
                     $returned = '';
                 }
+
+                // Fetch orders
                 $stm = "SELECT id, timestamp, returned FROM orders WHERE student=:student " . $returned;
                 $statement = $this->Db->prepare($stm);
                 $statement->bindparam(":student", $username);
@@ -158,11 +162,14 @@
 
         public function getAllOrders($filter){
             try{
+                // Append filter to SELECT query
                 $returned = '';
                 if ($filter == 'none') {
                     $returned = '';
                 }
                 $stm = "SELECT id, student, timestamp, returned FROM orders " . $returned;
+
+                // Fetch orders
                 $statement = $this->Db->prepare($stm);
                 $statement->execute();
 
@@ -176,6 +183,7 @@
 
         public function getAllItems($filter){
             try{
+                // Concatenate query string and filter
                 $returned = '';
                 if ($filter == 'none') {
                     $returned = '';
@@ -183,6 +191,8 @@
                     $returned = "WHERE available>0";
                 }
                 $stm = "SELECT description, available FROM stock " . $returned;
+
+                // Fetch items
                 $statement = $this->Db->prepare($stm);
                 $statement->execute();
 
@@ -196,6 +206,7 @@
 
         public function getOrderLoans($order){
             try{
+                // Fetch order loans, join with item description
                 $statement = $this->Db->prepare("SELECT loans.id, loans.item, stock.description, loans.quantity, loans.dueDate, loans.returned FROM loans INNER JOIN stock ON loans.item=stock.id WHERE loans.orderId=:orderId");
                 $statement->bindparam(":orderId", $order);
                 $statement->execute();
@@ -218,8 +229,8 @@
 
                 $orderId = $dataRows['orderId'];
                 $item = $dataRows['item'];
+
                 // Update with decremented $quantity
-                // $q = $dataRows[0]->quantity;
                 $q = $dataRows['quantity'];
                 if ($q > 0){
                     $q = $q - 1;
@@ -254,7 +265,7 @@
                 $statement->bindparam(":itemId", $item);
                 $statement->execute();
                 $dataRows = $statement->fetch(PDO::FETCH_ASSOC);
-
+                
                 $q = $dataRows['available'];
                 $total = $dataRows['total'];
                 if ($q < $total) {

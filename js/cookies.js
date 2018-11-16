@@ -25,6 +25,8 @@ function deleteCookie(name) {
     document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;' + ";path=/";
 }
 
+// I was being curious when testing,
+// saving very long orders in cookies is not a good idea.
 function getByteSize(s) {
     return encodeURIComponent('<q></q>' + s).length;
 }
