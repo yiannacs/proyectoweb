@@ -77,4 +77,4 @@ Almacena los préstamos (uno o más artículos del mismo tipo) que se han hecho.
 * _returned_, 0 si no se han regresado los artículos del préstamo, 1 si sí.
 
 ## Autor
-* **Yiann A. Celaya** - *A012050246* - [PurpleBooth](https://github.com/PurpleBooth)
+**Yiann A. Celaya** - *A012050246*
